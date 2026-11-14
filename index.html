@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RiemannChow 的作品 · 自己写、认真打磨的开源系统</title>
+  <meta name="description" content="两个从零搭起来的开源系统：agent-hub —— 会查数据、会画卡片的对话式 AI Agent；GroveMQ —— 面向 AI / IoT / 车联网的 Go MQTT Broker。代码、文档与设计取舍都在 GitHub 上。">
+  <meta name="theme-color" content="#faf8f4">
+  <meta property="og:title" content="RiemannChow 的作品 · 自己写、认真打磨的开源系统">
+  <meta property="og:description" content="agent-hub 与 GroveMQ：两个真能跑起来的开源系统。">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+  <link rel="stylesheet" href="./styles.css">
+  <!-- 提前标记 JS 可用，并记下上次选择的语言，减少切换时的闪烁 -->
+  <script>
+    document.documentElement.classList.add('js');
+    try {
+      document.documentElement.dataset.lang =
+        localStorage.getItem('portfolio-lang') === 'en' ? 'en' : 'zh';
+    } catch (e) {}
+  </script>
+</head>
+<body data-page="home">
+  <a class="skip-link" href="#main" data-i18n="common.skip">跳到主要内容</a>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a class="wordmark" href="./" aria-label="返回首页" data-i18n-label="common.wordmark.aria">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <rect width="64" height="64" rx="15" fill="#171b26"/>
+          <path d="M9 34h11l5-12 9 22 6-15 5 5h10" fill="none" stroke="#ffc24d" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="46" cy="34" r="3" fill="#3ddc97"/>
+        </svg>
+        <span data-i18n="common.brand">RiemannChow 的作品</span>
+      </a>
+      <nav class="nav-right" aria-label="主导航" data-i18n-label="common.nav.aria">
+        <a class="nav-link hide-sm" href="#projects" data-i18n="common.nav.projects">项目</a>
+        <a class="nav-link hide-sm" href="#about" data-i18n="common.nav.about">关于</a>
+        <a class="nav-link" href="https://github.com/RiemannChow" target="_blank" rel="noopener noreferrer" data-i18n="common.nav.github">GitHub ↗</a>
+        <div class="lang-switch" role="group" aria-label="语言切换">
+          <button type="button" data-lang="zh" aria-pressed="true">中文</button>
+          <button type="button" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============ Hero ============ -->
+    <section class="hero home-hero">
+      <div class="wash" aria-hidden="true">
+        <span class="wash-blob blob-a"></span>
+        <span class="wash-blob blob-b"></span>
+        <span class="wash-blob blob-c"></span>
+      </div>
+      <div class="container hero-inner">
+        <h1 class="hero-title" data-i18n="home.title" data-i18n-html>自己写、认真打磨的<br><em>开源系统</em></h1>
+        <p class="hero-sub" data-i18n="home.sub">不是 demo，是能跑起来的系统：一个会查数据、会把结果画成卡片的 Agent，一个替海量设备转消息的 Broker。代码、文档和设计取舍，都摊开在 GitHub 上。</p>
+
+        <div class="hero-icons" aria-label="项目与技术栈" data-i18n-label="home.icons.aria">
+          <a class="hi" style="--tc:#5ea5fa; --r:-7deg; --y:7px" href="./projects/agent-hub/" aria-label="打开 agent-hub 详情页" data-i18n-label="home.icon.ah">
+            <img src="./assets/agent-hub.svg" alt="">
+          </a>
+          <a class="hi" style="--tc:#3ddc97; --r:-5deg; --y:4px" href="./projects/grovemq/" aria-label="打开 GroveMQ 详情页" data-i18n-label="home.icon.mq">
+            <img src="./assets/grovemq.svg" alt="">
+          </a>
+          <span class="hi tech" style="--tc:#e76f00; --r:-3deg; --y:1.5px"><b>Java</b></span>
+          <span class="hi tech" style="--tc:#00add8; --r:-1deg; --y:0px"><b>Go</b></span>
+          <span class="hi tech" style="--tc:#6db33f; --r:1deg; --y:0px"><b>Spring</b></span>
+          <span class="hi tech" style="--tc:#8a6bd1; --r:3deg; --y:1.5px"><b>MQTT</b></span>
+          <span class="hi tech" style="--tc:#326ce5; --r:5deg; --y:4px"><b>K8s</b></span>
+          <span class="hi tech" style="--tc:#e6522c; --r:7deg; --y:7px"><b>gRPC</b></span>
+        </div>
+
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#projects">
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v12m0 0-5-5m5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span data-i18n="home.cta.browse">看看有哪些项目</span>
+          </a>
+          <a class="btn btn-ghost" href="https://github.com/RiemannChow" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
+
+        <div class="facts">
+          <span class="fact" data-i18n="home.fact1">2 个开源项目</span>
+          <span class="fact" data-i18n="home.fact3">持续更新中</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 项目卡片 ============ -->
+    <section id="projects" class="section projects-section">
+      <div class="container">
+        <div class="tools-head"><span class="kicker" data-i18n="home.all">全部项目</span></div>
+
+        <div class="tools-grid">
+
+          <!-- 新增项目：复制下面这一整段 <a class="tool-card ..."> 并改内容即可；
+               新增文案记得同时补进 i18n.js 的 ZH / EN 两份字典 -->
+          <a class="tool-card featured lead reveal" id="project-agent-hub" style="--tc:#5ea5fa"
+             href="./projects/agent-hub/">
+            <img class="tool-icon" src="./assets/agent-hub.svg" alt="agent-hub 项目图标" data-i18n-alt="home.ah.alt" width="104" height="104">
+            <div class="card-body">
+              <h3>agent-hub <span class="go" aria-hidden="true">→</span> <span class="badge" data-i18n="home.ah.badge">领衔</span></h3>
+              <p class="desc" data-i18n="home.ah.desc">一个会查数据的对话式 Agent：ReAct 编排工具调用，工具直接返回结构化卡片而不是一坨文字；向量 + 全文 + 标量混合检索，还有跨会话也认得你的长期记忆。</p>
+              <p class="sub-desc" data-i18n="home.ah.sub">DDD 分层 · SSE 流式事件 · A2UI 结果卡片 · A2A 协议与 Nacos 发现</p>
+              <div class="tags">
+                <span class="tag">Java 21</span>
+                <span class="tag">Spring Boot WebFlux</span>
+                <span class="tag">AgentScope 2.0</span>
+                <span class="tag" data-i18n="home.ah.tag4">混合检索 / RRF</span>
+                <span class="tag">Apache-2.0</span>
+              </div>
+            </div>
+            <div class="lead-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+          </a>
+
+          <a class="tool-card featured lead reveal" id="project-grovemq" style="--tc:#3ddc97; --rd:.1s"
+             href="./projects/grovemq/">
+            <img class="tool-icon" src="./assets/grovemq.svg" alt="GroveMQ 项目图标" data-i18n-alt="home.mq.alt" width="104" height="104">
+            <div class="card-body">
+              <h3>GroveMQ <span class="go" aria-hidden="true">→</span> <span class="badge" data-i18n="home.mq.badge">新登场</span></h3>
+              <p class="desc" data-i18n="home.mq.desc">给 AI、IoT 和车联网写的 MQTT Broker：轻量 Actor 内核管会话，节点间用 gRPC 自动路由消息，在 K8s 里靠 headless service 自己找到同伴。</p>
+              <p class="sub-desc" data-i18n="home.mq.sub">持久会话 · 共享订阅 · TLS / ACL · Prometheus 指标 · 三节点集群实测</p>
+              <div class="tags">
+                <span class="tag">Go 1.25</span>
+                <span class="tag">MQTT 3.1.1 / 5.0</span>
+                <span class="tag" data-i18n="home.mq.tag3">Actor 模型</span>
+                <span class="tag" data-i18n="home.mq.tag4">gRPC 集群</span>
+                <span class="tag">Kubernetes</span>
+              </div>
+            </div>
+            <div class="port-stack" aria-hidden="true">
+              <span><i></i>:1883 MQTT</span>
+              <span><i></i>:8081 gRPC</span>
+              <span><i></i>:8082 /metrics</span>
+            </div>
+          </a>
+
+          <div class="tool-card placeholder reveal" style="--rd:.18s" data-i18n="home.placeholder" data-i18n-html>
+            第三个位置，还空着。<br>更多项目正在路上，先去 GitHub 逛逛也可以 <a href="https://github.com/RiemannChow?tab=repositories" target="_blank" rel="noopener noreferrer">↗</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 关于 + 公众号 ============ -->
+    <section id="about" class="section about-section">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-card reveal">
+            <img class="about-avatar" src="./assets/avatar.jpg" alt="RiemannChow 的 GitHub 头像" data-i18n-alt="home.about.avatarAlt" width="96" height="96">
+            <div class="about-copy">
+              <span class="kicker" data-i18n="home.about.kicker">关于我</span>
+              <h2 data-i18n="home.about.title">把复杂的东西拆清楚，再一行行搭回来。</h2>
+              <!-- 自我介绍：中文原文与英文翻译都在 i18n.js 的 home.about.bio 里，改那里即可 -->
+              <p data-i18n="home.about.bio">RiemannChow，「老周聊架构」主理人，专注AI、大数据、云原生、数据库、物联网10余年，InfoQ签约作者，阿里云博客专家，腾讯云架构师深圳同盟理事，IT新媒体年度优秀文章，特别擅长分布式消息引擎Kafka以及Pulsar，seekdb贡献者。</p>
+              <div class="about-links">
+                <a class="btn btn-ghost btn-sm" href="https://github.com/RiemannChow" target="_blank" rel="noopener noreferrer" data-i18n="home.about.githubBtn">GitHub 主页 ↗</a>
+                <a class="btn btn-ghost btn-sm" href="https://github.com/RiemannChow?tab=repositories" target="_blank" rel="noopener noreferrer" data-i18n="home.about.reposBtn">全部仓库 ↗</a>
+              </div>
+            </div>
+          </div>
+
+          <aside class="qr-card reveal" aria-label="公众号二维码">
+            <span class="kicker" data-i18n="home.qr.kicker">关注我</span>
+            <h3 data-i18n="home.qr.title">老周聊架构</h3>
+            <a class="qr-image" href="./assets/wechat-qr.jpg" target="_blank" rel="noopener noreferrer">
+              <img src="./assets/wechat-qr-code.jpg" alt="老周聊架构 微信二维码" data-i18n-alt="home.qr.alt" width="220" height="220">
+            </a>
+            <p data-i18n="home.qr.sub">微信扫一扫，加我聊聊架构</p>
+            <a class="qr-hint" href="./assets/wechat-qr.jpg" target="_blank" rel="noopener noreferrer" data-i18n="home.qr.hint">点击查看大图 ↗</a>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© <span id="year">2026</span> RiemannChow</span>
+      <span><a href="https://github.com/RiemannChow" target="_blank" rel="noopener noreferrer">GitHub</a> · <a href="#projects" data-i18n="home.footer.projects">回到项目</a></span>
+    </div>
+  </footer>
+
+  <script src="./i18n.js" defer></script>
+  <script src="./script.js" defer></script>
+</body>
+</html>

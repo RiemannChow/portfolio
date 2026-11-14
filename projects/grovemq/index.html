@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GroveMQ · 海量设备接进来，消息照样送得到 | RiemannChow 的作品</title>
+  <meta name="description" content="GroveMQ：用 Go 写的 MQTT Broker，面向 AI / IoT / IIoT / 车联网。Actor 并发内核、gRPC 跨节点路由、Kubernetes 原生发现、Prometheus 指标与 TLS / ACL。">
+  <meta name="theme-color" content="#faf8f4">
+  <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="stylesheet" href="../../detail.css">
+  <script>
+    document.documentElement.classList.add('js');
+    try {
+      document.documentElement.dataset.lang =
+        localStorage.getItem('portfolio-lang') === 'en' ? 'en' : 'zh';
+    } catch (e) {}
+  </script>
+</head>
+<body class="detail-page theme-green" data-page="mq">
+  <a class="skip-link" href="#main" data-i18n="common.skip">跳到主要内容</a>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a class="back-link" href="../../">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+        <span data-i18n="common.back">全部项目</span>
+      </a>
+      <div class="detail-actions">
+        <a class="btn btn-primary btn-sm" href="https://github.com/RiemannChow/GroveMQ" target="_blank" rel="noopener noreferrer" data-i18n="common.source">GitHub 源码 ↗</a>
+        <a class="btn btn-ghost btn-sm hide-sm" href="../agent-hub/" data-i18n="mq.cross">agent-hub →</a>
+        <div class="lang-switch" role="group" aria-label="语言切换">
+          <button type="button" data-lang="zh" aria-pressed="true">中文</button>
+          <button type="button" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============ Hero ============ -->
+    <section class="detail-hero">
+      <div class="detail-stripes" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="container detail-inner">
+        <div class="detail-copy">
+          <div class="detail-app">
+            <img src="../../assets/grovemq.svg" alt="GroveMQ 项目图标" data-i18n-alt="mq.iconAlt" width="68" height="68">
+            <div>
+              <div class="detail-app-name" data-i18n="mq.appName">GroveMQ · MQTT Broker</div>
+              <div class="detail-app-cat" data-i18n="mq.appCat">Go · 消息中间件 · 开源</div>
+            </div>
+          </div>
+          <h1 class="hero-title" data-i18n="mq.hero.title" data-i18n-html>海量设备接进来，<br><em>消息照样送得到。</em></h1>
+          <p class="hero-sub" data-i18n="mq.hero.sub">一个用 Go 写的 MQTT Broker，面向 AI、IoT、IIoT 和车联网场景。轻量级的 Actor 内核管理每个客户端会话，节点之间用 gRPC 自动路由消息，在 Kubernetes 里靠 headless service 自己找到同伴；TLS / ACL、持久会话、共享订阅和 Prometheus 指标都在里面。</p>
+          <div class="detail-ctas">
+            <a class="btn btn-primary" href="https://github.com/RiemannChow/GroveMQ" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7 4h9v9M16 4 6 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span data-i18n="common.cta.source">在 GitHub 看源码</span>
+            </a>
+            <a class="btn btn-ghost" href="#run" data-i18n="common.cta.run">怎么跑起来 ↓</a>
+          </div>
+          <div class="facts">
+            <span class="fact">Go 1.25+</span>
+            <span class="fact">MQTT 3.1.1 / 5.0</span>
+            <span class="fact" data-i18n="mq.fact3">gRPC 集群</span>
+            <span class="fact">Kubernetes</span>
+          </div>
+        </div>
+
+        <div class="demo-wrap">
+          <div class="demo-panel">
+            <div class="demo-bar"><i></i><i></i><i></i><span>grovemq / cluster · 3 nodes</span></div>
+            <div class="demo-nodes">
+              <div class="demo-node"><span class="demo-dot"></span><b>node-1</b><code>:1883</code><small>publisher</small></div>
+              <div class="demo-node"><span class="demo-dot"></span><b>node-2</b><code>:1884</code><small>subscriber</small></div>
+              <div class="demo-node"><span class="demo-dot"></span><b>node-3</b><code>:1885</code><small>peer</small></div>
+            </div>
+            <div class="demo-flow">
+              <div>PUBLISH <b>sensors/veh-042/temp</b> @ node-1</div>
+              <div class="demo-arrow" data-i18n="mq.demo.arrow">gRPC 路由 · 跨节点 ↓</div>
+              <div>SUBSCRIBER @ node-2 <b class="ok">✓ delivered</b></div>
+            </div>
+            <div class="demo-ports">
+              <span><b>1883</b> MQTT</span>
+              <span><b>8081</b> gRPC</span>
+              <span><b>8082</b> /metrics</span>
+            </div>
+            <div class="demo-note" data-i18n="mq.demo.note">界面示意 · 端口与测试流程来自 README</div>
+          </div>
+          <div class="demo-float">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M8 12a3 3 0 0 0 4.2 0l2.3-2.3a3 3 0 0 0-4.2-4.2l-1.1 1.1M12 8a3 3 0 0 0-4.2 0L5.5 10.3a3 3 0 0 0 4.2 4.2l1.1-1.1"/></svg>
+            <span data-i18n="mq.demo.float">订阅者不在同一节点，消息照样送得到</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 为什么 ============ -->
+    <section class="detail-section alt">
+      <div class="container">
+        <div class="detail-head">
+          <span class="kicker" data-i18n="mq.why.kicker">为什么</span>
+          <h2 class="section-title" data-i18n="mq.why.title" data-i18n-html>设备一多，<br>单节点 Broker 先撑不住。</h2>
+          <p class="section-sub" data-i18n="mq.why.sub">会话、订阅和消息路由挤在一个进程里，扩容只能靠堆机器，跨节点投递还得自己补。</p>
+        </div>
+        <div class="card-grid">
+          <div class="info-card">
+            <h3 data-i18n="mq.why.1h">会话绑死在单机</h3>
+            <p data-i18n="mq.why.1p">客户端一重连，订阅状态就断档；离线期间的消息也没地方落。</p>
+          </div>
+          <div class="info-card">
+            <h3 data-i18n="mq.why.2h">集群要手工配</h3>
+            <p data-i18n="mq.why.2p">节点列表写死在配置里，K8s 里 Pod 一漂移就对不上，扩容得先改一遍配置。</p>
+          </div>
+          <div class="info-card">
+            <h3 data-i18n="mq.why.3h">出问题看不见</h3>
+            <p data-i18n="mq.why.3p">没有指标，连接数、Actor 重启次数基本靠猜，排查只能翻日志。</p>
+          </div>
+        </div>
+        <p class="detail-transition" data-i18n="mq.why.transition" data-i18n-html>GroveMQ 用 Actor 管会话，把集群路由与节点发现<em>交给独立的模块</em>。</p>
+      </div>
+    </section>
+
+    <!-- ============ 能力 ============ -->
+    <section class="detail-section">
+      <div class="container">
+        <div class="detail-head">
+          <span class="kicker" data-i18n="mq.feat.kicker">做了什么</span>
+          <h2 class="section-title" data-i18n="mq.feat.title">从协议解析到集群发现，都在仓库里</h2>
+          <p class="section-sub" data-i18n="mq.feat.sub">pkg/ 下每个包管一件事，文档在 docs/ 里按角色分好了入口。</p>
+        </div>
+        <div class="card-grid">
+          <div class="info-card">
+            <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/><circle cx="18" cy="17" r="2"/></svg></div>
+            <h3 data-i18n="mq.feat.1h">MQTT v3.1.1 / v5.0</h3>
+            <p data-i18n="mq.feat.1p">CONNECT / SUBSCRIBE / PUBLISH 全流程，包含 MQTT 5.0 的 properties 与 reason codes。</p>
+          </div>
+          <div class="info-card">
+            <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="8"/><path d="M12 4v3M12 17v3M4 12h3M17 12h3"/></svg></div>
+            <h3 data-i18n="mq.feat.2h">Actor 并发内核</h3>
+            <p data-i18n="mq.feat.2p">OTP 风格的轻量 Actor 管理每个会话，supervisor 按「let it crash」思路做容错重启。</p>
+          </div>
+          <div class="info-card">
+            <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="7" height="6" rx="1.5"/><rect x="14" y="4" width="7" height="6" rx="1.5"/><rect x="8.5" y="15" width="7" height="6" rx="1.5"/><path d="M6.5 10v2.5h11V10M12 12.5V15"/></svg></div>
+            <h3 data-i18n="mq.feat.3h">动态集群</h3>
+            <p data-i18n="mq.feat.3p">节点自动组成集群分担负载，跨节点消息路由由集群状态管理器自动处理。</p>
+          </div>
+          <div class="info-card">
+            <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="m12 12 8-4.5M12 12v9M12 12 4 7.5"/></svg></div>
+            <h3 data-i18n="mq.feat.4h">K8s 原生发现</h3>
+            <p data-i18n="mq.feat.4p">通过 headless service 自动发现 peer，Pod 漂移不用改节点列表。</p>
+          </div>
+          <div class="info-card">
+            <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h12M8 12H4M4 16h12M16 6l4 6-4 6"/></svg></div>
+            <h3 data-i18n="mq.feat.5h">gRPC 节点通信</h3>
+            <p data-i18n="mq.feat.5p">Protobuf 强类型接口，承载路由、状态同步和集群管理三件事。</p>
+          </div>
+          <div class="info-card">
+            <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 18V9M9 18V5M14 18v-6M19 18V8"/><path d="M3 21h18"/></svg></div>
+            <h3 data-i18n="mq.feat.6h">可观测与安全</h3>
+            <p data-i18n="mq.feat.6p">Prometheus 指标（连接数、Actor 重启）、TLS、ACL、持久会话、retained 与共享订阅。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 跑起来 ============ -->
+    <section class="detail-section alt" id="run">
+      <div class="container">
+        <div class="detail-head">
+          <span class="kicker" data-i18n="mq.run.kicker">跑起来</span>
+          <h2 class="section-title" data-i18n="mq.run.title">三条命令，从单节点验到集群</h2>
+          <p class="section-sub" data-i18n="mq.run.sub">需要 Go 1.25+；三节点集群示例还需要 Docker Compose v2。</p>
+        </div>
+        <div class="card-grid">
+          <div class="info-card">
+            <div class="step-num">1</div>
+            <h3 data-i18n="mq.run.1h">构建</h3>
+            <p data-i18n="mq.run.1p">产出仓库根目录下的 grovemq 二进制，记得从仓库根目录启动，才能读到 config.yaml。</p>
+            <code class="code-line">go build ./cmd/grovemq</code>
+          </div>
+          <div class="info-card">
+            <div class="step-num">2</div>
+            <h3 data-i18n="mq.run.2h">启动单节点</h3>
+            <p data-i18n="mq.run.2p">1883 收 MQTT 连接、8081 走集群 gRPC、8082 暴露 /metrics。</p>
+            <code class="code-line">./grovemq</code>
+            <code class="code-line"><span class="cm"># </span>localhost:1883 · :8081 · :8082</code>
+          </div>
+          <div class="info-card">
+            <div class="step-num">3</div>
+            <h3 data-i18n="mq.run.3h">验跨节点投递</h3>
+            <p data-i18n="mq.run.3p">订阅者连 node-2 (1884)、发布者连 node-1 (1883)，检查消息有没有送到对面。</p>
+            <code class="code-line">./scripts/start-cluster.sh</code>
+            <code class="code-line">go run ./cmd/cluster-test</code>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 上线前 ============ -->
+    <section class="detail-section">
+      <div class="container">
+        <div class="detail-head">
+          <span class="kicker" data-i18n="mq.faq.kicker">上线前</span>
+          <h2 class="section-title" data-i18n="mq.faq.title">有几件事得先改</h2>
+        </div>
+        <div class="faq-list">
+          <div class="faq-item">
+            <h3 data-i18n="mq.faq.1h">默认账号能直接上生产吗？</h3>
+            <p data-i18n="mq.faq.1p">不能。config.yaml 里的 admin / admin123 是演示凭据，README 明确要求：暴露到任何网络之前，替换所有密码、关闭不需要的账号、复核 TLS 与 ACL 设置。测试套件也用同一套凭据，改了要同步。</p>
+          </div>
+          <div class="faq-item">
+            <h3 data-i18n="mq.faq.2h">怎么确认跨节点投递真的通？</h3>
+            <p data-i18n="mq.faq.2p">cluster-test 把订阅者接到 node-2 (1884)、发布者接到 node-1 (1883)，从 node-1 发一条消息，再看 node-2 的订阅者是否收到。Docker Compose 版直接用 docker-compose-cluster.yaml。</p>
+          </div>
+          <div class="faq-item">
+            <h3 data-i18n="mq.faq.3h">需要额外装数据库或注册中心吗？</h3>
+            <p data-i18n="mq.faq.3p">不需要。会话存储是通用 KV 接口加内存实现，集群发现靠 K8s headless service，本地三节点用脚本或 compose 文件就能起。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 收尾 CTA ============ -->
+    <section class="detail-section">
+      <div class="container">
+        <div class="detail-cta">
+          <h2 data-i18n="mq.cta.h2">从单节点到三节点集群，一条命令就能验</h2>
+          <p data-i18n="mq.cta.p">协议实现、集群路由、K8s 清单、混沌工程与 E2E 测试报告，都收在 docs/ 里。</p>
+          <div class="detail-ctas">
+            <a class="btn btn-primary" href="https://github.com/RiemannChow/GroveMQ" target="_blank" rel="noopener noreferrer" data-i18n="common.cta.sourceArrow">去 GitHub 看源码 ↗</a>
+            <a class="btn btn-ghost" href="../../" data-i18n="common.cta.back">← 返回作品集</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© <span id="year">2026</span> RiemannChow</span>
+      <span><a href="https://github.com/RiemannChow/GroveMQ" target="_blank" rel="noopener noreferrer" data-i18n="common.footer.repo">GitHub 仓库</a> · <a href="../../" data-i18n="common.footer.all">全部项目</a></span>
+    </div>
+  </footer>
+
+  <script src="../../i18n.js" defer></script>
+  <script src="../../script.js" defer></script>
+</body>
+</html>
