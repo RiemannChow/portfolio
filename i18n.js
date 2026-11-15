@@ -27,10 +27,10 @@
     'common.footer.all': `全部项目`,
 
     /* ---------- 首页 ---------- */
-    'home.meta.title': `RiemannChow 的作品 · 自己写、认真打磨的开源系统`,
+    'home.meta.title': `RiemannChow 的作品 · 自己亲手写、持续打磨的开源作品集`,
     'home.meta.desc': `两个从零搭起来的开源系统：agent-hub —— 会查数据、会画卡片的对话式 AI Agent；GroveMQ —— 面向 AI / IoT / 车联网的 Go MQTT Broker。代码、文档与设计取舍都在 GitHub 上。`,
-    'home.title': `自己写、认真打磨的<br><em>开源系统</em>`,
-    'home.sub': `不是 demo，是能跑起来的系统：一个会查数据、会把结果画成卡片的 Agent，一个替海量设备转消息的 Broker。代码、文档和设计取舍，都摊开在 GitHub 上。`,
+    'home.title': `自己亲手写、持续打磨的<br><em>开源作品集</em>`,
+    'home.sub': `<span class="hero-slogan">心怀远大，创造伟大。</span>`,
     'home.icons.aria': `项目与技术栈`,
     'home.icon.ah': `打开 agent-hub 详情页`,
     'home.icon.mq': `打开 GroveMQ 详情页`,
@@ -51,7 +51,6 @@
     'home.mq.alt': `GroveMQ 项目图标`,
     'home.placeholder': `第三个位置，还空着。<br>更多项目正在路上，先去 GitHub 逛逛也可以 <a href="https://github.com/RiemannChow?tab=repositories" target="_blank" rel="noopener noreferrer">↗</a>`,
     'home.about.kicker': `关于我`,
-    'home.about.title': `把复杂的东西拆清楚，再一行行搭回来。`,
     'home.about.bio': `RiemannChow，「老周聊架构」主理人，专注AI、大数据、云原生、数据库、物联网10余年，InfoQ签约作者，阿里云博客专家，腾讯云架构师深圳同盟理事，IT新媒体年度优秀文章，特别擅长分布式消息引擎Kafka以及Pulsar，seekdb贡献者。`,
     'home.about.avatarAlt': `RiemannChow 的 GitHub 头像`,
     'home.about.githubBtn': `GitHub 主页 ↗`,
@@ -206,10 +205,10 @@
     'common.footer.all': `All projects`,
 
     /* ---------- Home ---------- */
-    'home.meta.title': `RiemannChow's Work · Open-source systems, built from scratch`,
+    'home.meta.title': `RiemannChow's Work · Open-source work, hand-built & refined`,
     'home.meta.desc': `Two systems built from scratch: agent-hub, a conversational AI agent that turns query results into cards, and GroveMQ, a Go MQTT broker for AI, IoT and connected vehicles. Code, docs and design notes are all on GitHub.`,
-    'home.title': `Open-source systems,<br><em>built from scratch.</em>`,
-    'home.sub': `Not demos — systems that actually run: an agent that queries data and renders the answer as cards, and a broker that moves messages for fleets of devices. Code, docs and design decisions are all out in the open on GitHub.`,
+    'home.title': `Open-source work,<br><em>hand-built &amp; refined.</em>`,
+    'home.sub': `<span class="hero-slogan">Think big. Build great.</span>`,
     'home.icons.aria': `Projects and tech stack`,
     'home.icon.ah': `Open the agent-hub page`,
     'home.icon.mq': `Open the GroveMQ page`,
@@ -230,7 +229,6 @@
     'home.mq.alt': `GroveMQ project icon`,
     'home.placeholder': `The third slot is still empty.<br>More projects are on the way — until then, feel free to browse GitHub <a href="https://github.com/RiemannChow?tab=repositories" target="_blank" rel="noopener noreferrer">↗</a>`,
     'home.about.kicker': `ABOUT`,
-    'home.about.title': `Taking complex systems apart, then building them back line by line.`,
     'home.about.bio': `RiemannChow, creator of "Lao Zhou Talks Architecture". 10+ years across AI, big data, cloud-native, databases and IoT. Contracted InfoQ author, Alibaba Cloud blog expert, council member of the Tencent Cloud Architects Alliance (Shenzhen), and winner of an IT New Media Annual Outstanding Article award. Specialised in distributed messaging engines — Kafka and Pulsar — and a contributor to seekdb.`,
     'home.about.avatarAlt': `RiemannChow's GitHub avatar`,
     'home.about.githubBtn': `GitHub profile ↗`,

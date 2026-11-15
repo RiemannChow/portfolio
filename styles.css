@@ -204,6 +204,64 @@ h1, h2, h3, p { margin: 0; }
   max-width: 36em; margin: 0 auto 0;
 }
 
+/* 首页标语：流动的炫彩渐变 + 光泽扫过 + 轻微浮动 + 呼吸光晕 */
+.home-hero .hero-sub { position: relative; }
+.home-hero .hero-sub::before {
+  content: "";
+  position: absolute; z-index: -1;
+  left: 50%; top: 50%;
+  width: min(520px, 92%); height: 240%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(ellipse at center,
+    rgba(160, 107, 255, .20), rgba(59, 167, 255, .08) 46%, transparent 72%);
+  filter: blur(20px);
+  pointer-events: none;
+  animation: sloganGlow 4.2s ease-in-out infinite;
+}
+@keyframes sloganGlow {
+  0%, 100% { opacity: .55; transform: translate(-50%, -50%) scale(.94); }
+  50%      { opacity: 1;   transform: translate(-50%, -50%) scale(1.06); }
+}
+
+.hero-slogan {
+  display: inline-block;
+  font-size: clamp(25px, 3.8vw, 38px);
+  font-weight: 800;
+  letter-spacing: .06em;
+  line-height: 1.4;
+  color: #b3452f; /* 不支持 background-clip:text 时的回退色 */
+}
+html[data-lang="en"] .hero-slogan { letter-spacing: .015em; }
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .hero-slogan {
+    background-image:
+      linear-gradient(105deg, transparent 32%, rgba(255, 255, 255, .7) 48%, transparent 64%),
+      linear-gradient(100deg,
+        #ff5f6d 0%, #ff9a3d 16%, #ffd24d 32%, #3ddc97 50%,
+        #3ba7ff 66%, #a06bff 82%, #ff5f6d 100%);
+    background-size: 200% 100%;
+    background-position: 0% 50%;
+    -webkit-background-clip: text;
+            background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    animation: sloganFlow 5.5s linear infinite, sloganFloat 3.4s ease-in-out infinite;
+    will-change: background-position, transform;
+  }
+  @keyframes sloganFlow {
+    from { background-position: 0% 50%; }
+    to   { background-position: 200% 50%; }
+  }
+  @keyframes sloganFloat {
+    0%, 100% { transform: translateY(0)    scale(1); }
+    50%      { transform: translateY(-3px) scale(1.015); }
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-slogan,
+  .home-hero .hero-sub::before { animation: none; }
+}
+
 /* 图标浮条：弧形排布 + 品牌色辉光 + 轻微漂浮 */
 .hero-icons {
   display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
@@ -396,11 +454,7 @@ h1, h2, h3, p { margin: 0; }
   box-shadow: 0 14px 40px rgba(70, 53, 25, .14);
 }
 .about-copy { flex: 1; min-width: 0; }
-.about-copy h2 {
-  font-size: clamp(21px, 2.6vw, 27px); font-weight: 800;
-  letter-spacing: -.015em; line-height: 1.35; margin: 6px 0 12px;
-}
-.about-copy p { color: var(--muted); font-size: 15.5px; max-width: 62ch; }
+.about-copy p { color: var(--muted); font-size: 15.5px; max-width: 62ch; margin-top: 10px; }
 .about-links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 22px; }
 
 .qr-card {
