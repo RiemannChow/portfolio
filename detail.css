@@ -20,6 +20,13 @@ body.theme-green {
   --accent-line: rgba(14, 148, 105, .32);
   --ink-tint: rgba(14, 148, 105, .10);
 }
+body.theme-purple {
+  --accent: #635bff;
+  --accent-ink: #4c46d6;
+  --accent-soft: rgba(99, 91, 255, .11);
+  --accent-line: rgba(99, 91, 255, .32);
+  --ink-tint: rgba(99, 91, 255, .10);
+}
 
 /* 覆盖首页写死的琥珀色组件 */
 .detail-page .btn-primary {

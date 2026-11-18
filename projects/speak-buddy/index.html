@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SpeakBuddy · 开口说，才真的会 | RiemannChow 的作品</title>
+  <meta name="description" content="SpeakBuddy：打开网页就能用的英语口语私教。兴趣定级、个性化学习路线、Web Speech API 跟读逐词纠音、真实情景角色扮演对话，全部在浏览器本地运行。">
+  <meta name="theme-color" content="#faf8f4">
+  <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="stylesheet" href="../../detail.css">
+  <script>
+    document.documentElement.classList.add('js');
+    try {
+      document.documentElement.dataset.lang =
+        localStorage.getItem('portfolio-lang') === 'en' ? 'en' : 'zh';
+    } catch (e) {}
+  </script>
+</head>
+<body class="detail-page theme-purple" data-page="sb">
+  <a class="skip-link" href="#main" data-i18n="common.skip">跳到主要内容</a>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a class="back-link" href="../../">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+        <span data-i18n="common.back">全部项目</span>
+      </a>
+      <div class="detail-actions">
+        <a class="btn btn-primary btn-sm" href="https://github.com/riemann-chow-product/speak-buddy" target="_blank" rel="noopener noreferrer" data-i18n="common.source">GitHub 源码 ↗</a>
+        <a class="btn btn-ghost btn-sm hide-sm" href="../agent-hub/" data-i18n="sb.cross1">agent-hub →</a>
+        <a class="btn btn-ghost btn-sm hide-sm" href="../grovemq/" data-i18n="sb.cross2">GroveMQ →</a>
+        <div class="lang-switch" role="group" aria-label="语言切换">
+          <button type="button" data-lang="zh" aria-pressed="true">中文</button>
+          <button type="button" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============ Hero ============ -->
+    <section class="detail-hero">
+      <div class="detail-stripes" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="container detail-inner">
+        <div class="detail-copy">
+          <div class="detail-app">
+            <img src="../../assets/speak-buddy.svg" alt="SpeakBuddy 项目图标" data-i18n-alt="sb.iconAlt" width="68" height="68">
+            <div>
+              <div class="detail-app-name" data-i18n="sb.appName">SpeakBuddy · 英语口语练习</div>
+              <div class="detail-app-cat" data-i18n="sb.appCat">原生前端 · Web Speech API · 开源</div>
+            </div>
+          </div>
+          <h1 class="hero-title" data-i18n="sb.hero.title" data-i18n-html>开口说，<br><em>才真的会。</em></h1>
+          <p class="hero-sub" data-i18n="sb.hero.sub">一个打开网页就能用的英语口语私教：先通过跟读和理解题定级，再按兴趣排一条属于你的学习路线；逐词对齐纠音，还能进真实场景做角色扮演对话。没有后端，也没有需要配置的密钥。</p>
+          <div class="detail-ctas">
+            <a class="btn btn-primary" href="https://github.com/riemann-chow-product/speak-buddy" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7 4h9v9M16 4 6 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span data-i18n="common.cta.source">在 GitHub 看源码</span>
+            </a>
+            <a class="btn btn-ghost" href="#run" data-i18n="common.cta.run">怎么跑起来 ↓</a>
+          </div>
+          <div class="facts">
+            <span class="fact" data-i18n="sb.fact1">零后端</span>
+            <span class="fact" data-i18n="sb.fact2">8 单元 / 24 关</span>
+            <span class="fact" data-i18n="sb.fact3">逐词纠音</span>
+            <span class="fact">Apache-2.0</span>
+          </div>
+        </div>
+
+        <div class="demo-wrap">
+          <div class="demo-panel">
+            <div class="demo-bar"><i></i><i></i><i></i><span>speakbuddy / shadowing · l1</span></div>
+            <div class="demo-user">Nice to meet you.</div>
+            <div class="demo-line"><span class="demo-chip">ASR</span><span>nice to meet you</span><b>✓</b></div>
+
+            <div class="demo-card">
+              <div class="demo-card-head">
+                <span class="demo-chip" data-i18n="sb.demo.alignLabel">逐词对齐</span>
+                <small data-i18n="sb.demo.scoreLabel">准确度 92 · 流利度 88 · 完整度 100</small>
+              </div>
+              <div class="demo-hit"><em data-i18n="sb.demo.ok">准确</em><span>nice / to / you</span><small>✓</small></div>
+              <div class="demo-hit"><em data-i18n="sb.demo.near">近音</em><span>meet · /iː/</span><small data-i18n="sb.demo.retry">需重练</small></div>
+            </div>
+
+            <div class="demo-card">
+              <div class="demo-card-head">
+                <span class="demo-chip" data-i18n="sb.demo.diagnoseLabel">发音诊断</span>
+                <small>focus: /iː/ · linking</small>
+              </div>
+              <div class="demo-flow" data-i18n="sb.demo.tip">meet 是长音 /iː/，把音拖够；meet you 可以连读成 /miːtʃu/。</div>
+            </div>
+            <div class="demo-note" data-i18n="sb.demo.note">界面示意 · 评分与音标仅用于展示</div>
+          </div>
+          <div class="demo-float">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M8 12a3 3 0 0 0 4.2 0l2.3-2.3a3 3 0 0 0-4.2-4.2l-1.1 1.1M12 8a3 3 0 0 0-4.2 0L5.5 10.3a3 3 0 0 0 4.2 4.2l1.1-1.1"/></svg>
+            <span data-i18n="sb.demo.float">逐词对齐，问题直接指出来</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 为什么 ============ -->
+    <section class="detail-section alt">
+      <div class="container">
+        <div class="detail-head">
+          <span class="kicker" data-i18n="sb.why.kicker">为什么</span>
+          <h2 class="section-title" data-i18n="sb.why.title" data-i18n-html>学了很多年英语，<br>真开口还是卡。</h2>
+          <p class="section-sub" data-i18n="sb.why.sub">背单词和刷语法题都能做，缺的是一个低压力、随时能开口、还能告诉你错在哪的练习场。</p>
+        </div>
+        <div class="card-grid">
+          <div class="info-card">
+            <h3 data-i18n="sb.why.1h">开口机会太少</h3>
+            <p data-i18n="sb.why.1p">看懂不等于说得出口。没有反馈的「跟读」只是重复自己的发音，错的还是错。</p>
+          </div>
+          <div class="info-card">
+            <h3 data-i18n="sb.why.2h">只给一个总分</h3>
+            <p data-i18n="sb.why.2p">85 分看不出是哪个音没发准、哪个词被吞掉，练半天也不知道下一步该改什么。</p>
+          </div>
+          <div class="info-card">
+            <h3 data-i18n="sb.why.3h">路线对谁都一样</h3>
+            <p data-i18n="sb.why.3p">同一个课程从第一页翻起，兴趣和水平都不同，大多数人卡在前几关就放弃了。</p>
+          </div>
+        </div>
+        <p class="detail-transition" data-i18n="sb.why.transition" data-i18n-html>所以 SpeakBuddy 把「测水平、排路线、纠发音、练对话」<em>串成一条回路</em>。</p>
+      </div>
+    </section>
+
+    <!-- ============ 能力 ============ -->
+    <section class="detail-section">
+      <div class="container">
+        <div class="detail-head">
+          <span class="kicker" data-i18n="sb.feat.kicker">做了什么</span>
+          <h2 class="section-title" data-i18n="sb.feat.title">从第一句话到第一场对话</h2>
+          <p class="section-sub" data-i18n="sb.feat.sub">课程、音素知识库、对话剧本和评分算法都在 js/ 里，浏览器直接跑。</p>
+        </div>
+        <div class="card-grid">
+          <div class="info-card">
+            <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 7v5c0 4.4 3.2 7.9 8 9 4.8-1.1 8-4.6 8-9V7l-8-4z"/><path d="m9 12 2 2 4-4"/></svg></div>
+            <h3 data-i18n="sb.feat.1h">入学定级</h3>
+            <p data-i18n="sb.feat.1p">4 句自适应跟读加 6 道理解题，校准到 A2 / B1 / B2 三档；不方便开麦克风时也能先测。</p>
+          </div>
+          <div class="info-card">
+            <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M8.2 7.5h7.6M7.4 8.3l3.4 7.3M16.6 8.3l-3.4 7.3"/></svg></div>
+            <h3 data-i18n="sb.feat.2h">兴趣排课</h3>
+            <p data-i18n="sb.feat.2p">从 10 类兴趣话题出发，把 8 个单元 / 24 关重新排序；三段难度各成主线，低一档随时回头复习。</p>
+          </div>
+          <div class="info-card">
+            <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 10v4M9 6v12M13 9v6M17 4v16M21 10v4"/></svg></div>
+            <h3 data-i18n="sb.feat.3h">逐词纠音</h3>
+            <p data-i18n="sb.feat.3p">用浏览器语音识别转写，再按 Needleman-Wunsch 词级对齐，标出漏读、多读和近音替换。</p>
+          </div>
+          <div class="info-card">
+            <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 18V9M9 18V5M14 18v-6M19 18V8"/><path d="M3 21h18"/></svg></div>
+            <h3 data-i18n="sb.feat.4h">三维评分与诊断</h3>
+            <p data-i18n="sb.feat.4p">准确度、流利度、完整度分开给分，再配合 17 项音素知识库，说清「改哪里、怎么改」。</p>
+          </div>
+          <div class="info-card">
+            <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H8l-4 4V5z"/><path d="M8 10h8M8 13h5"/></svg></div>
+            <h3 data-i18n="sb.feat.5h">情景对话</h3>
+            <p data-i18n="sb.feat.5p">机场问询、职场沟通等剧本，每轮给出多种可接受说法，按「意图关键词组 + 表达相似度」判定是否达成沟通目标，离线运行。</p>
+          </div>
+          <div class="info-card">
+            <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></div>
+            <h3 data-i18n="sb.feat.6h">本地存档</h3>
+            <p data-i18n="sb.feat.6p">星级、XP、连击、成就、每日任务和学习统计都存在 localStorage，另有镜像备份与导入导出，不需要账号或服务端。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 跑起来 ============ -->
+    <section class="detail-section alt" id="run">
+      <div class="container">
+        <div class="detail-head">
+          <span class="kicker" data-i18n="sb.run.kicker">跑起来</span>
+          <h2 class="section-title" data-i18n="sb.run.title">三步，今天就能开口</h2>
+          <p class="section-sub" data-i18n="sb.run.sub">纯静态文件，不需要构建、数据库或密钥；用 Chrome 或 Edge 打开。</p>
+        </div>
+        <div class="card-grid">
+          <div class="info-card">
+            <div class="step-num">1</div>
+            <h3 data-i18n="sb.run.1h">起一个静态服务</h3>
+            <p data-i18n="sb.run.1p">克隆仓库后在根目录起任意静态服务器；仓库里的 CNAME 已指向 speak-buddy.riemann-chow.cn。</p>
+            <code class="code-line">git clone https://github.com/riemann-chow-product/speak-buddy.git</code>
+            <code class="code-line">python3 -m http.server 8000</code>
+          </div>
+          <div class="info-card">
+            <div class="step-num">2</div>
+            <h3 data-i18n="sb.run.2h">解锁语音能力</h3>
+            <p data-i18n="sb.run.2p">首次访问点一下页面完成语音解锁，并允许浏览器使用麦克风；朗读优先选本地英语音色。</p>
+            <code class="code-line"><span class="cm"># </span>localhost:8000 · Chrome / Edge</code>
+          </div>
+          <div class="info-card">
+            <div class="step-num">3</div>
+            <h3 data-i18n="sb.run.3h">定级，然后开练</h3>
+            <p data-i18n="sb.run.3p">选兴趣话题 → 跟读测评 → 生成学习路线 → 一关关练下去；换设备前记得导出备份。</p>
+            <code class="code-line"><span class="cm"># </span>设置 → 数据备份 → 导出 / 导入</code>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 设计取舍 ============ -->
+    <section class="detail-section">
+      <div class="container">
+        <div class="detail-head">
+          <span class="kicker" data-i18n="sb.faq.kicker">设计取舍</span>
+          <h2 class="section-title" data-i18n="sb.faq.title">几个被问过的问题</h2>
+        </div>
+        <div class="faq-list">
+          <div class="faq-item">
+            <h3 data-i18n="sb.faq.1h">为什么不接个大模型后端？</h3>
+            <p data-i18n="sb.faq.1p">判定全部在浏览器里完成：跟读靠语音识别加词级对齐，对话靠意图关键词组和表达相似度。不上传音频、不依赖 API key，打开网页就能练，也没有服务端成本。</p>
+          </div>
+          <div class="faq-item">
+            <h3 data-i18n="sb.faq.2h">TTS 为什么会卡，怎么解决的？</h3>
+            <p data-i18n="sb.faq.2p">Chrome 下 cancel() 与 speak() 连着调用会吞掉首音节，代码在中间留了间隔；在线音色遇到网络抖动会断流，所以优先选本地 en 音色；非 1.0 语速可能卡在 paused，另加看门狗和自动重试。首次访问还要一次点击才能解锁语音。</p>
+          </div>
+          <div class="faq-item">
+            <h3 data-i18n="sb.faq.3h">换设备进度还在吗？</h3>
+            <p data-i18n="sb.faq.3p">默认不会，存档按设计只存在本机 localStorage，另有一份镜像防止主存档损坏。要搬家就用设置里的导出 / 导入，把整份进度复制过去。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 收尾 CTA ============ -->
+    <section class="detail-section">
+      <div class="container">
+        <div class="detail-cta">
+          <h2 data-i18n="sb.cta.h2">代码全在仓库，打开网页就能练</h2>
+          <p data-i18n="sb.cta.p">课程内容、音素知识库、对话剧本和评分算法都是纯前端实现，想看细节直接翻 js/ 下的各个模块。</p>
+          <div class="detail-ctas">
+            <a class="btn btn-primary" href="https://github.com/riemann-chow-product/speak-buddy" target="_blank" rel="noopener noreferrer" data-i18n="common.cta.sourceArrow">去 GitHub 看源码 ↗</a>
+            <a class="btn btn-ghost" href="../../" data-i18n="common.cta.back">← 返回作品集</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© <span id="year">2026</span> RiemannChow</span>
+      <span><a href="https://github.com/riemann-chow-product/speak-buddy" target="_blank" rel="noopener noreferrer" data-i18n="common.footer.repo">GitHub 仓库</a> · <a href="../../" data-i18n="common.footer.all">全部项目</a></span>
+    </div>
+  </footer>
+
+  <script src="../../i18n.js" defer></script>
+  <script src="../../script.js" defer></script>
+</body>
+</html>

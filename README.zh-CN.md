@@ -8,6 +8,7 @@
 | --- | --- | --- | --- |
 | agent-hub | 会查数据、把结果渲染成结构化卡片的对话式 AI Agent | `./projects/agent-hub/` | [RiemannChow/agent-hub](https://github.com/RiemannChow/agent-hub) |
 | GroveMQ | 面向 AI / IoT / 车联网的 Go MQTT Broker | `./projects/grovemq/` | [RiemannChow/GroveMQ](https://github.com/RiemannChow/GroveMQ) |
+| SpeakBuddy | 打开网页就能练的英语口语私教：兴趣定级、逐词纠音、情景对话 | `./projects/speak-buddy/` | [riemann-chow-product/speak-buddy](https://github.com/riemann-chow-product/speak-buddy) |
 
 ## 目录结构
 
@@ -21,13 +22,15 @@ portfolio/
 ├── assets/
 │   ├── agent-hub.svg             # 项目图标（首页卡片 / 图标排 / 详情页共用）
 │   ├── grovemq.svg
+│   ├── speak-buddy.svg
 │   ├── favicon.svg
 │   ├── avatar.jpg                # GitHub 头像的本地副本，避免外部请求
 │   ├── wechat-qr.jpg             # 公众号 / 微信原始名片图（点击看大图）
 │   └── wechat-qr-code.jpg        # 从原图裁出的 650×650 二维码正方形
 ├── projects/
 │   ├── agent-hub/index.html      # 蓝色主题详情页
-│   └── grovemq/index.html        # 绿色主题详情页
+│   ├── grovemq/index.html        # 绿色主题详情页
+│   └── speak-buddy/index.html    # 紫色主题详情页
 ├── .nojekyll                     # 告诉 Pages 跳过 Jekyll，原样发布静态文件
 ├── .gitignore
 ├── README.md                     # 英文（GitHub 默认展示）
@@ -105,9 +108,9 @@ git push -u origin main
 
 ## 项目详情页
 
-两页共用 `detail.css`，骨架参考 `product.yao-yang.cn/tools/news/`：
+三页共用 `detail.css`，骨架参考 `product.yao-yang.cn/tools/news/`：
 
-1. **顶部**：左侧「‹ 全部项目」返回首页，右侧 GitHub 源码按钮 + 另一个项目的交叉链接
+1. **顶部**：左侧「‹ 全部项目」返回首页，右侧 GitHub 源码按钮 + 另外两个项目的交叉链接
 2. **Hero**：左文案（项目图标 / 名称 / 双行标题，第二行用项目品牌色 / 描述 / CTA / 标签），右侧深色产品示意面板 + 浮动标签；背景是斜向淡色条纹
 3. **为什么**：三张痛点卡 + 一句过渡
 4. **做了什么**：六张能力卡（内联 SVG 图标）
@@ -115,9 +118,9 @@ git push -u origin main
 6. **设计取舍 / 上线前**：问答卡
 7. **收尾 CTA + 页脚**：都留了 GitHub 源码入口
 
-品牌色由 `<body class="detail-page theme-blue">`（或 `theme-green`）决定，在 `detail.css` 里改 `--accent` 系列变量就能换一套；`theme-*` 加在 body 上，会覆盖首页写死的琥珀色按钮与 kicker。
+品牌色由 `<body class="detail-page theme-blue">`（或 `theme-green`、`theme-purple`）决定，在 `detail.css` 里改 `--accent` 系列变量就能换一套；`theme-*` 加在 body 上，会覆盖首页写死的琥珀色按钮与 kicker。
 
-深色面板里的柱状图、命中列表、节点与路由流程都是**纯 HTML/CSS 画的示意图**，不是截图，面板底部也标注了「界面示意」，避免被误读成真实运行数据。两页文案均来自对应仓库的 README。
+深色面板里的柱状图、命中列表、节点与路由流程、逐词对齐结果都是**纯 HTML/CSS 画的示意图**，不是截图，面板底部也标注了「界面示意」，避免被误读成真实运行数据。三页文案均来自对应仓库的 README、代码与仓库描述。
 
 ## 维护
 
@@ -130,7 +133,7 @@ git push -u origin main
 - `src="./assets/xxx.svg"`：把新图标放进 `assets/`
 - `h3` / `.desc` / `.sub-desc` / `.tag`：项目名、描述、亮点、技术标签
 - 右侧装饰：`.lead-dots`（三色呼吸点）或 `.port-stack`（端口/指标）二选一，也可以删掉
-- 顶部图标排里的两个项目图标同样指向详情页，新增时照着加一个 `<a class="hi">`
+- 顶部图标排里的项目图标同样指向详情页，新增时照着加一个 `<a class="hi">`
 
 卡片默认是通栏 `.lead`。如果想改成两列小卡，去掉 `lead` class 即可（`.tools-grid` 本身就是两列栅格）。
 
@@ -148,13 +151,13 @@ git push -u origin main
 - **所有页面文案**：`i18n.js` 的 `ZH` 与 `EN` 两份字典，两份都要改；HTML 里的中文只是无 JS 兜底
 - 自我介绍：键 `home.about.bio`；公众号卡片：键 `home.qr.*`
 - 首页主题色：`styles.css` 顶部 `:root` 的 `--accent`、`.hero-title em` 的渐变
-- 详情页品牌色：`detail.css` 里的 `body.theme-blue` / `body.theme-green`
+- 详情页品牌色：`detail.css` 里的 `body.theme-blue` / `body.theme-green` / `body.theme-purple`
 - 头像 / 二维码：替换 `assets/avatar.jpg`、`assets/wechat-qr.jpg`、`assets/wechat-qr-code.jpg`（保持文件名即可）
 - 页脚年份由 `script.js` 自动更新，不用手改
 
 ## 说明
 
-- 首页与详情页文案都基于两个仓库的 README 与仓库描述整理，没有虚构功能、许可证或性能数字。
+- 首页与详情页文案都基于三个仓库的 README、代码与仓库描述整理，没有虚构功能、许可证或性能数字。
 - 深色产品面板是 HTML/CSS 画的界面示意，面板内已明确标注，避免被当成真实截图或压测数据。
 - 项目内容直接写在 HTML 里（不是 JS 动态渲染），便于搜索引擎抓取，也方便离线预览；双语仅替换已有文案，不改变 DOM 结构。
 - 全站支持中英文切换，选择保存在 `localStorage`；关闭 JS 时保持中文且内容完整可见。

@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RiemannChow 的作品 · 自己亲手写、持续打磨的开源作品集</title>
-  <meta name="description" content="两个从零搭起来的开源系统：agent-hub —— 会查数据、会画卡片的对话式 AI Agent；GroveMQ —— 面向 AI / IoT / 车联网的 Go MQTT Broker。代码、文档与设计取舍都在 GitHub 上。">
+  <meta name="description" content="三个从零搭起来的开源项目：agent-hub —— 会查数据、会画卡片的对话式 AI Agent；GroveMQ —— 面向 AI / IoT / 车联网的 Go MQTT Broker；SpeakBuddy —— 打开网页就能练的英语口语私教。代码、文档与设计取舍都在 GitHub 上。">
   <meta name="theme-color" content="#faf8f4">
   <meta property="og:title" content="RiemannChow 的作品 · 自己亲手写、持续打磨的开源作品集">
-  <meta property="og:description" content="agent-hub 与 GroveMQ：两个真能跑起来的开源系统。">
+  <meta property="og:description" content="agent-hub、GroveMQ 与 SpeakBuddy：三个真能跑起来的开源项目。">
   <meta property="og:type" content="website">
   <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
   <link rel="stylesheet" href="./styles.css">
@@ -64,6 +64,9 @@
           <a class="hi" style="--tc:#3ddc97; --r:-5deg; --y:4px" href="./projects/grovemq/" aria-label="打开 GroveMQ 详情页" data-i18n-label="home.icon.mq">
             <img src="./assets/grovemq.svg" alt="">
           </a>
+          <a class="hi" style="--tc:#635bff; --r:-2deg; --y:2px" href="./projects/speak-buddy/" aria-label="打开 SpeakBuddy 详情页" data-i18n-label="home.icon.sb">
+            <img src="./assets/speak-buddy.svg" alt="">
+          </a>
           <span class="hi tech" style="--tc:#e76f00; --r:-3deg; --y:1.5px"><b>Java</b></span>
           <span class="hi tech" style="--tc:#00add8; --r:-1deg; --y:0px"><b>Go</b></span>
           <span class="hi tech" style="--tc:#6db33f; --r:1deg; --y:0px"><b>Spring</b></span>
@@ -81,7 +84,7 @@
         </div>
 
         <div class="facts">
-          <span class="fact" data-i18n="home.fact1">2 个开源项目</span>
+          <span class="fact" data-i18n="home.fact1">3 个开源项目</span>
           <span class="fact" data-i18n="home.fact3">持续更新中</span>
         </div>
       </div>
@@ -136,9 +139,23 @@
             </div>
           </a>
 
-          <div class="tool-card placeholder reveal" style="--rd:.18s" data-i18n="home.placeholder" data-i18n-html>
-            第三个位置，还空着。<br>更多项目正在路上，先去 GitHub 逛逛也可以 <a href="https://github.com/RiemannChow?tab=repositories" target="_blank" rel="noopener noreferrer">↗</a>
-          </div>
+          <a class="tool-card featured lead reveal" id="project-speak-buddy" style="--tc:#635bff; --rd:.18s"
+             href="./projects/speak-buddy/">
+            <img class="tool-icon" src="./assets/speak-buddy.svg" alt="SpeakBuddy 项目图标" data-i18n-alt="home.sb.alt" width="104" height="104">
+            <div class="card-body">
+              <h3>SpeakBuddy <span class="go" aria-hidden="true">→</span> <span class="badge" data-i18n="home.sb.badge">开口就能练</span></h3>
+              <p class="desc" data-i18n="home.sb.desc">一个打开网页就能用的英语口语私教：先按兴趣和水平定级，再排一条只属于你的学习路线；跟读逐词对齐纠音，还能进真实场景做角色扮演对话。</p>
+              <p class="sub-desc" data-i18n="home.sb.sub">兴趣定级 · 逐词纠音 · 情景对话 · 本地存档，无需后端</p>
+              <div class="tags">
+                <span class="tag" data-i18n="home.sb.tag1">原生 HTML / CSS / JS</span>
+                <span class="tag">Web Speech API</span>
+                <span class="tag" data-i18n="home.sb.tag3">词级对齐评分</span>
+                <span class="tag" data-i18n="home.sb.tag4">零后端</span>
+                <span class="tag">Apache-2.0</span>
+              </div>
+            </div>
+            <div class="lead-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+          </a>
 
         </div>
       </div>

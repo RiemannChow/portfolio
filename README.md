@@ -8,6 +8,7 @@ Currently featured:
 | --- | --- | --- | --- |
 | agent-hub | A conversational AI agent that queries data and renders results as structured cards | `./projects/agent-hub/` | [RiemannChow/agent-hub](https://github.com/RiemannChow/agent-hub) |
 | GroveMQ | A Go MQTT broker for AI, IoT and connected vehicles | `./projects/grovemq/` | [RiemannChow/GroveMQ](https://github.com/RiemannChow/GroveMQ) |
+| SpeakBuddy | A browser-based English speaking coach: interest-based placement, word-by-word pronunciation feedback and role-play | `./projects/speak-buddy/` | [riemann-chow-product/speak-buddy](https://github.com/riemann-chow-product/speak-buddy) |
 
 ## Project structure
 
@@ -21,13 +22,15 @@ portfolio/
 ├── assets/
 │   ├── agent-hub.svg             # Project icon (shared by home cards, icon row, detail page)
 │   ├── grovemq.svg
+│   ├── speak-buddy.svg
 │   ├── favicon.svg
 │   ├── avatar.jpg                # Local copy of the GitHub avatar, no external request
 │   ├── wechat-qr.jpg             # Original WeChat card image (opens as the large view)
 │   └── wechat-qr-code.jpg        # 650×650 square QR code cropped from the original
 ├── projects/
 │   ├── agent-hub/index.html      # Blue-theme detail page
-│   └── grovemq/index.html        # Green-theme detail page
+│   ├── grovemq/index.html        # Green-theme detail page
+│   └── speak-buddy/index.html    # Purple-theme detail page
 ├── .nojekyll                     # Tells Pages to skip Jekyll and publish files as-is
 ├── .gitignore
 ├── README.md                     # English (default on GitHub)
@@ -105,9 +108,9 @@ Replace both images together when updating the QR code. The crop finds the colou
 
 ## Project detail pages
 
-Both pages share `detail.css`; the layout follows `product.yao-yang.cn/tools/news/`:
+All three pages share `detail.css`; the layout follows `product.yao-yang.cn/tools/news/`:
 
-1. **Header**: "‹ All projects" back link on the left, GitHub source + a cross-link to the other project on the right
+1. **Header**: "‹ All projects" back link on the left, GitHub source + cross-links to the other two projects on the right
 2. **Hero**: copy on the left (icon / name / two-line title with the second line in the brand color / description / CTAs / tags), a dark UI mock panel with a floating label on the right; diagonal light stripes in the background
 3. **Why**: three pain-point cards plus a transition line
 4. **What it does**: six capability cards with inline SVG icons
@@ -115,9 +118,9 @@ Both pages share `detail.css`; the layout follows `product.yao-yang.cn/tools/new
 6. **Design trade-offs / Before production**: Q&A cards
 7. **Closing CTA + footer**: both keep a GitHub source link
 
-The brand color comes from `<body class="detail-page theme-blue">` (or `theme-green`); change the `--accent` variables in `detail.css` to swap it. `theme-*` on the body overrides the amber buttons and kicker hardcoded for the home page.
+The brand color comes from `<body class="detail-page theme-blue">` (or `theme-green`, `theme-purple`); change the `--accent` variables in `detail.css` to swap it. `theme-*` on the body overrides the amber buttons and kicker hardcoded for the home page.
 
-The bar chart, hit list, cluster nodes and routing flow inside the dark panel are **pure HTML/CSS illustrations**, not screenshots; the panel is labelled "UI illustration" so it can't be mistaken for live data. All copy on both pages comes from the corresponding repository READMEs.
+The bar chart, hit list, cluster nodes, routing flow and word-alignment results inside the dark panel are **pure HTML/CSS illustrations**, not screenshots; the panel is labelled "UI illustration" so it can't be mistaken for live data. All copy on the three pages comes from the corresponding repositories' READMEs, source code and descriptions.
 
 ## Maintenance
 
@@ -130,7 +133,7 @@ The bar chart, hit list, cluster nodes and routing flow inside the dark panel ar
 - `src="./assets/xxx.svg"`: put the new icon in `assets/`
 - `h3` / `.desc` / `.sub-desc` / `.tag`: name, description, highlights, tech tags
 - Right-hand decoration: choose `.lead-dots` (three breathing dots) or `.port-stack` (ports/metrics), or remove it
-- The two project icons in the header icon row also link to detail pages; add another `<a class="hi">` for the new project
+- The project icons in the header icon row also link to detail pages; add another `<a class="hi">` for the new project
 
 Cards are full-width `.lead` by default. Drop the `lead` class for two small cards per row (`.tools-grid` is already a two-column grid).
 
@@ -148,13 +151,13 @@ Cards are full-width `.lead` by default. Drop the `lead` class for two small car
 - **All page copy**: the `ZH` and `EN` dictionaries in `i18n.js` — edit both; the Chinese in HTML is only the no-JS fallback
 - Bio: key `home.about.bio`; WeChat card: keys `home.qr.*`
 - Home theme color: `--accent` in `:root` at the top of `styles.css`, plus the `.hero-title em` gradient
-- Detail brand colors: `body.theme-blue` / `body.theme-green` in `detail.css`
+- Detail brand colors: `body.theme-blue` / `body.theme-green` / `body.theme-purple` in `detail.css`
 - Avatar / QR code: replace `assets/avatar.jpg`, `assets/wechat-qr.jpg`, `assets/wechat-qr-code.jpg` (keep the filenames)
 - The footer year is updated by `script.js`; no manual edit needed
 
 ## Notes
 
-- Home and detail copy is based on the two repositories' READMEs and descriptions — no invented features, licenses or benchmark numbers.
+- Home and detail copy is based on the three repositories' READMEs, source code and descriptions — no invented features, licenses or benchmark numbers.
 - The dark product panels are HTML/CSS UI illustrations and are labelled as such, so they aren't mistaken for real screenshots or load-test data.
 - Content is written directly in HTML (not rendered by JS) for search engines and offline preview; bilingual switching only replaces existing copy and never changes the DOM structure.
 - The site supports Chinese and English, with the choice stored in `localStorage`; with JS disabled it stays fully readable in Chinese.
